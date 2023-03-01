@@ -1,0 +1,24 @@
+Package: lazygeopkg
+Title: Delayed read and tidyverse access style for geopackage format geospatial data
+Version: 0.0.0.9000
+Authors@R: 
+    person("Richard", "Beare", email="Richard.Beare@gmail.com", role = c("aut", "cre"))
+Description: dplyr verbs for geospatial data stored in geopkg format. Geopkg is
+    sqlite and can thus be accessed using standard DB tools. This package provides
+    wrapping to return data in simple feature (sf) tables. The concept is identical
+    to `lazysf`, but using DBI rather than GDAL to support SQL. This offers
+    some advantages in the area of filtering joins and more standard SQL behaviour,
+    but only works on geopackage rather than all geospatial file formats.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Depends: R (>= 3.4.0)
+Imports: 
+    DBI,
+    dplyr,
+    methods,
+    rlang,
+    RSQLite,
+    sf,
+    tibble
