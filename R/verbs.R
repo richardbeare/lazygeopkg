@@ -90,7 +90,7 @@ tbl.GeopkgConnection <- function(src, from, ...) {
 #'
 collect.tbl_GeopkgConnection <- function(x, ..., n = Inf, warn_incomplete = TRUE, cte = FALSE) {
   res <- NextMethod()
-  gname <- x$geomcolname
+  gname <- x[["geomcolname"]]
   # could use mutate, but then we'd have to do rlang stuff
   if (!is.null(res[[gname]])) {
     # some operations can remove geometry columns
@@ -102,7 +102,7 @@ collect.tbl_GeopkgConnection <- function(x, ..., n = Inf, warn_incomplete = TRUE
       res <- res[!msng,]
       warning("Filtered missing geometries - check if this is OK")
     }
-    res[[gname]] <-  sf::st_as_sfc(res[[gname]], crs = x$CRS)
+    res[[gname]] <-  sf::st_as_sfc(res[[gname]], crs = x[["CRS"]])
     res <- sf::st_as_sf(res)
   }
   return(res)
